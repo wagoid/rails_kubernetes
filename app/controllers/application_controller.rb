@@ -12,4 +12,10 @@ class ApplicationController < ActionController::API
   def response_for_unprocessable_entity(message)
     render json: { messages: [message] }, status: :unprocessable_entity
   end
+
+  def index
+    users = User.all.count
+
+    render plain: "Rails Kubernetes API on sterois. User count: #{users}"
+  end
 end
