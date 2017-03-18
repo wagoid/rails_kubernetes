@@ -13,7 +13,7 @@ spec:
       - name: rku
         image: gcr.io/study-161802/rku:latest
         resources:
-          request:
+          requests:
             memory: "64Mi"
             cpu: "50m"
           limits:
