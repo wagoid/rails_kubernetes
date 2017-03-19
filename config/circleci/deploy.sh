@@ -10,4 +10,4 @@ RAILS_ENV=production envsubst < deployment.yml > deployment.parsed.yml
 sudo /opt/google-cloud-sdk/bin/gcloud docker -- push gcr.io/${PROJECT_NAME}/rku
 sudo chown -R ubuntu:ubuntu /home/ubuntu/.kube
 # Applies the rolling update to the deployment
-kubectl patch --record -f deployment.yml -p "`cat deployment.parsed.yml`"
+GOOGLE_APPLICATION_CREDENTIALS=../account-auth.json kubectl patch --record -f deployment.yml -p "`cat deployment.parsed.yml`"
