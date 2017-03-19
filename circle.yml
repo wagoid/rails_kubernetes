@@ -27,4 +27,4 @@ deployment:
   production:
     branch: master
     commands:
-      - ./config/circleci/deploy.sh
+      - sh ./config/circleci/deploy.sh
