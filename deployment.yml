@@ -11,20 +11,26 @@ spec:
     spec:
       containers:
       - name: rku
+        # Image version is latest when manually deploying, but when deploying it will be rku:${CIRCLE_BUILD_NUM}
         image: gcr.io/study-161802/rku:latest
         resources:
           requests:
             memory: "64Mi"
             cpu: "50m"
           limits:
-            memory: "96Mi"
-            cpu: "100m"
+            memory: "128Mi"
+            cpu: "150m"
         ports:
         - containerPort: 3000
         env:
         - name: RAILS_ENV
-          value: "production"
+          value: "${RAILS_ENV}"
         - name: DBPASS
-          value: "quizmtv12"
+          value: "${DBPASS}"
         - name: SECRET_KEY_BASE
-          value: "102ec6ddfd98f662f6e750e7f746a62c8017ba841dfb3197b1d937e2f37be2ce2d10b457b1fa1a49aac2e849ce39396ced712d40ec02d9cf68e96f7459208fbb"
+          value: "${SECRET_KEY_BASE}"
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      # A minimum of 70% of the pods will be available while performing 0 downtime deploy
+      maxUnavailable: "30%"

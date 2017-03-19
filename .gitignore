@@ -18,3 +18,6 @@
 
 #Environment files
 .env
+
+#Files generated during deployment
+deployment.parsed.yml
