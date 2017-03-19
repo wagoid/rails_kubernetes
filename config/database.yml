@@ -82,5 +82,5 @@ production:
   <<: *default
   database: rails_kubernetes_production
   username: sentient
-  host: 35.184.33.130
+  host: <%= ENV['DBHOST'] %>
   password: <%= ENV['DBPASS'] %>

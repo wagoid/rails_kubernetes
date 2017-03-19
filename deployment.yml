@@ -24,6 +24,8 @@ spec:
         env:
         - name: RAILS_ENV
           value: "${RAILS_ENV}"
+        - name: DBHOST
+          value: "${DBHOST}"
         - name: DBPASS
           value: "${DBPASS}"
         - name: SECRET_KEY_BASE
