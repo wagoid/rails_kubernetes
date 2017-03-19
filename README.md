@@ -1,7 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails 5 sample app configured to run with Kubernetes in Google Container Engine. CI is handled by CircleCI.
 
 Things you may want to cover:
 
