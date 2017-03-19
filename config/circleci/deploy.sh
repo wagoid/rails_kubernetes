@@ -1,10 +1,13 @@
 # Exit on any error
 set -e
 
+# prepare database before running containers
+git checkout config/database.yml
 RAILS_ENV=production bundle exec rails db:migrate
-sudo /opt/google-cloud-sdk/bin/gcloud docker -- push us.gcr.io/${PROJECT_NAME}/rku
-sudo chown -R ubuntu:ubuntu /home/ubuntu/.kube
 # Update deployment file with environment values
 RAILS_ENV=production envsubst < deployment.yml > deployment.parsed.yml
+
+sudo /opt/google-cloud-sdk/bin/gcloud docker -- push us.gcr.io/${PROJECT_NAME}/rku
+sudo chown -R ubuntu:ubuntu /home/ubuntu/.kube
 # Applies the rolling update to the deployment
-kubectl patch -f deployment.yml -p "`cat deployment.parsed.yml`"
+kubectl patch --record -f deployment.yml -p "`cat deployment.parsed.yml`"

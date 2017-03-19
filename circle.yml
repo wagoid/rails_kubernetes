@@ -16,8 +16,8 @@ dependencies:
     - sudo /opt/google-cloud-sdk/bin/gcloud config set compute/zone ${CLOUDSDK_COMPUTE_ZONE}
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet container clusters get-credentials $CLUSTER_NAME
     # set --rm false due to errors when removing intermediate containers in CircleCI
-    - docker build --rm=false -t us.gcr.io/${PROJECT_NAME}/rku:$CIRCLE_BUILD_NUM .
-    - docker tag us.gcr.io/${PROJECT_NAME}/rku:$CIRCLE_BUILD_NUM us.gcr.io/${PROJECT_NAME}/rku:latest
+    - docker build --rm=false -t gcr.io/${PROJECT_NAME}/rku:$CIRCLE_BUILD_NUM .
+    - docker tag gcr.io/${PROJECT_NAME}/rku:$CIRCLE_BUILD_NUM gcr.io/${PROJECT_NAME}/rku:latest
 
 test:
   override:
