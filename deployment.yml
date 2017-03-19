@@ -11,8 +11,7 @@ spec:
     spec:
       containers:
       - name: rku
-        # Image version is latest when manually deploying, but when deploying it will be rku:${CIRCLE_BUILD_NUM}
-        image: gcr.io/study-161802/rku:latest
+        image: gcr.io/study-161802/rku:${CIRCLE_BUILD_NUM}
         resources:
           requests:
             memory: "64Mi"

@@ -1,7 +1,10 @@
 FROM ruby:2.3-slim
 MAINTAINER Wagner Santos <wagnermecsantos@gmail.com>
 
-RUN apt-get update && apt-get install -qq -y --no-install-recommends \
+# Set noninteractive and installing apt-utils first to avoid errors
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update && apt-get install -y -qq --no-install-recommends apt-utils
+RUN apt-get install -qq -y --no-install-recommends \
       build-essential nodejs libpq-dev
 
 ENV INSTALL_PATH /app
