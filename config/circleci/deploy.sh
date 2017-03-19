@@ -7,7 +7,7 @@ RAILS_ENV=production bundle exec rails db:migrate
 # Update deployment file with environment values
 RAILS_ENV=production envsubst < deployment.yml > deployment.parsed.yml
 
-sudo /opt/google-cloud-sdk/bin/gcloud docker -- push us.gcr.io/${PROJECT_NAME}/rku
+sudo /opt/google-cloud-sdk/bin/gcloud docker -- push gcr.io/${PROJECT_NAME}/rku
 sudo chown -R ubuntu:ubuntu /home/ubuntu/.kube
 # Applies the rolling update to the deployment
 kubectl patch --record -f deployment.yml -p "`cat deployment.parsed.yml`"
