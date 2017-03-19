@@ -14,8 +14,6 @@ class ApplicationController < ActionController::API
   end
 
   def index
-    users = User.all.count
-
-    render plain: "Rails Kubernetes API on sterois. User count: #{users}"
+    render plain: "Rails Kubernetes API on sterois. User count: #{User.all.count}"
   end
 end

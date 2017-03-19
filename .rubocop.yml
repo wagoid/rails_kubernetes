@@ -1,0 +1,39 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'bin/*'
+    - 'config.ru'
+    - 'config/environments/*'
+    - 'config/initializers/*'
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - Gemfile
+    - Guardfile
+  DisplayCopNames: true
+Rails:
+  Enabled: true
+AmbiguousOperator:
+  Enabled: false
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - Rakefile
+    - 'config/*'
+Style/Documentation:
+  Enabled: false
+Style/HashSyntax:
+  Exclude:
+    - Rakefile
+    - '**/*.rake'
+Style/IndentHash:
+  EnforcedStyle: consistent
+Style/LambdaCall:
+  Enabled: false
+Style/MultilineMethodCallIndentation:
+  Enabled: false
+Style/Next:
+  Enabled: false
+Style/WordArray:
+  Enabled: false
+Style/ModuleFunction:
+  EnforcedStyle: extend_self
