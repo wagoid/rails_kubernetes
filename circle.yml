@@ -22,9 +22,6 @@ dependencies:
 test:
   override:
     - bundle exec rake
-  post:
-    - docker run -d -p 3000:3000 -e "SECRET_KEY_BASE=abcd1234" us.gcr.io/${PROJECT_NAME}/rku:$CIRCLE_BUILD_NUM; sleep 10
-    - curl --retry 10 --retry-delay 5 -v http://localhost:3000
 
 deployment:
   production:
